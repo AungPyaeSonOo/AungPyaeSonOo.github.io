@@ -459,52 +459,71 @@ a:focus-visible, button:focus-visible {
 /* ============================================================
    STATS BAR
    ============================================================ */
-.stats { padding-bottom: 20px; }
+.stats { 
+  padding-bottom: 20px; 
+}
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 .stat-card {
-  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   background: var(--surface);
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  backdrop-filter: blur(12px);
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .stat-card:hover {
-  border-color: rgba(34, 211, 238, 0.35);
-  transform: translateY(-3px);
+  border-color: rgba(34, 211, 238, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
-.stat-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
-}
-
-.stat-label {
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 500;
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.3));
 }
 
 .stat-value {
   font-family: "Space Grotesk", sans-serif;
-  font-size: 1.6rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.stat-text { font-size: 1.05rem; color: var(--cyan); }
+.stat-text { 
+  font-size: 2.2rem; 
+  background: none;
+  -webkit-text-fill-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.stat-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
 
 /* ============================================================
-   PROGRESS BARS (shared)
+   PROGRESS BARS (Skills)
    ============================================================ */
 .bar {
   height: 7px;
@@ -863,53 +882,93 @@ a:focus-visible, button:focus-visible {
 /* ============================================================
    CONTACT
    ============================================================ */
-.contact { padding-block: 120px; }
+.contact { 
+  padding-block: 120px; 
+}
 
-.contact-inner {
-  max-width: 720px;
+.contact-wrapper {
+  position: relative;
+  max-width: 800px;
   margin-inline: auto;
+  padding: 80px 40px;
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  background: var(--surface);
+  overflow: hidden;
   text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+}
+
+/* Glow behind the card */
+.contact-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.15), transparent 60%);
+  pointer-events: none;
+}
+
+.contact-content {
+  position: relative;
+  z-index: 2;
 }
 
 .contact-lead {
   max-width: 500px;
   margin: 20px auto 0;
   color: var(--muted);
+  font-size: 1.05rem;
 }
 
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-top: 34px;
+  gap: 16px;
+  margin-top: 40px;
 }
 
-.contact-orbits {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 44px;
+/* 3D Background Rings for Contact */
+.contact-orbit {
+  position: absolute;
+  inset: 0;
+  perspective: 1000px;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.orbit-btn {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border: 1px solid var(--border-strong);
+.c-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--muted);
-  transition: color 0.25s ease, border-color 0.25s ease,
-              transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  transform-style: preserve-3d;
 }
 
-.orbit-btn:hover {
-  color: var(--text);
-  border-color: rgba(34, 211, 238, 0.55);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(34, 211, 238, 0.2);
+.c-ring-1 {
+  width: 600px;
+  height: 600px;
+  margin: -300px 0 0 -300px;
+  animation: contact-spin-a 24s linear infinite;
+}
+
+.c-ring-2 {
+  width: 800px;
+  height: 800px;
+  margin: -400px 0 0 -400px;
+  border-color: rgba(34, 211, 238, 0.1);
+  animation: contact-spin-b 32s linear infinite reverse;
+}
+
+@keyframes contact-spin-a {
+  from { transform: rotateX(65deg) rotateZ(0deg); }
+  to   { transform: rotateX(65deg) rotateZ(360deg); }
+}
+
+@keyframes contact-spin-b {
+  from { transform: rotateX(55deg) rotateY(15deg) rotateZ(0deg); }
+  to   { transform: rotateX(55deg) rotateY(15deg) rotateZ(360deg); }
 }
 
 /* ============================================================
@@ -1003,6 +1062,14 @@ a:focus-visible, button:focus-visible {
 
   .section { padding-block: 76px; }
   .contact { padding-block: 88px; }
+  
+  /* New Contact adjustments for mobile */
+  .contact-wrapper {
+    padding: 50px 24px;
+    border-radius: 24px;
+  }
+  
+  .contact-orbit { display: none; }
 
   .footer-inner {
     flex-direction: column;
@@ -1047,7 +1114,7 @@ a:focus-visible, button:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  .ring, .orbit-chip, .badge-dot { animation: none; }
+  .ring, .orbit-chip, .badge-dot, .c-ring { animation: none; }
 
   .js .reveal { opacity: 1; transform: none; }
 
