@@ -62,7 +62,7 @@ a:focus-visible, button:focus-visible {
   margin-inline: auto;
 }
 
-.grad, .text-grad {
+.grad {
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
@@ -403,7 +403,7 @@ a:focus-visible, button:focus-visible {
     inset 0 0 40px rgba(0, 0, 0, 0.55);
 }
 
-/* --- Two-Layer Photo System --- */
+/* --- Two-Layer Photo System (Default Avatar + Real Photo) --- */
 .orb-photo .profile-layer {
   position: absolute;
   inset: 0;
@@ -457,50 +457,69 @@ a:focus-visible, button:focus-visible {
 }
 
 /* ============================================================
-   STATS BAR (Clean, Minimalist)
+   STATS BAR
    ============================================================ */
-.stats {
-  padding-block: 20px 60px;
+.stats { 
+  padding-bottom: 20px; 
 }
 
 .stats-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  padding: 30px 20px;
-  background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.08), transparent 70%);
-  border-radius: var(--radius);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
-.stat-item {
+.stat-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
   text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(34, 211, 238, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.3));
 }
 
 .stat-value {
   font-family: "Space Grotesk", sans-serif;
   font-size: 2.8rem;
   font-weight: 700;
-  line-height: 1.1;
-  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-text { 
+  font-size: 2.2rem; 
+  background: none;
+  -webkit-text-fill-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .stat-label {
   color: var(--muted);
   font-size: 0.85rem;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  margin-top: 6px;
-}
-
-.stat-divider {
-  width: 1px;
-  height: 50px;
-  background: linear-gradient(180deg, transparent, var(--border-strong), transparent);
 }
 
 /* ============================================================
@@ -522,7 +541,8 @@ a:focus-visible, button:focus-visible {
   transition: width 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.js .reveal.in-view .bar-fill {
+.js .reveal.in-view .bar-fill,
+.js .stat-card.in-view .bar-fill {
   width: calc(var(--val, 0) * 1%);
 }
 
@@ -592,72 +612,55 @@ a:focus-visible, button:focus-visible {
 .project-card:hover .card-glow { opacity: 1; }
 
 /* ============================================================
-   ABOUT (Perfect 50/50 Layout)
+   ABOUT
    ============================================================ */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Exactly 50% / 50% */
-  gap: 24px;
-  align-items: stretch;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 22px;
+  align-items: start;
 }
 
-.about-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Centers the text vertically */
-  height: 100%;
-}
-
-.about-card-content p {
+.about-card p {
   color: var(--muted);
   margin-bottom: 16px;
-  font-size: 1.02rem;
 }
 
-.about-card-content p:last-child {
-  margin-bottom: 0;
-}
+.about-card p:last-child { margin-bottom: 0; }
 
-.about-final {
-  color: var(--text) !important;
-  font-weight: 500;
-}
+.about-final { color: var(--text) !important; font-weight: 500; }
 
 .about-side {
   display: grid;
-  grid-template-rows: 1fr 1fr; /* Exactly 50% / 50% vertically */
-  gap: 24px;
+  gap: 18px;
 }
 
 .side-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  padding: 24px 32px;
-  height: 100%;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.side-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px);
 }
 
 .side-icon {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 14px;
   border-radius: 12px;
   color: var(--cyan);
   background: rgba(34, 211, 238, 0.1);
 }
 
-.side-card h3 {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-}
-
-.side-card p {
-  color: var(--muted);
-  font-size: 0.92rem;
-}
+.side-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.side-card p { color: var(--muted); font-size: 0.9rem; }
 
 /* ============================================================
    SKILLS
@@ -877,32 +880,37 @@ a:focus-visible, button:focus-visible {
 .timeline-note { margin-top: 10px; }
 
 /* ============================================================
-   CONTACT (Clean Centered)
+   CONTACT
    ============================================================ */
 .contact { 
-  padding-block: 140px; 
+  padding-block: 120px; 
+}
+
+.contact-wrapper {
   position: relative;
+  max-width: 800px;
+  margin-inline: auto;
+  padding: 80px 40px;
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  background: var(--surface);
   overflow: hidden;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
 }
 
-.contact-glow {
+/* Glow behind the card */
+.contact-wrapper::before {
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 60%);
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.15), transparent 60%);
   pointer-events: none;
-  z-index: 1;
 }
 
-.contact-inner {
+.contact-content {
   position: relative;
   z-index: 2;
-  max-width: 680px;
-  margin-inline: auto;
-  text-align: center;
 }
 
 .contact-lead {
@@ -918,6 +926,49 @@ a:focus-visible, button:focus-visible {
   justify-content: center;
   gap: 16px;
   margin-top: 40px;
+}
+
+/* 3D Background Rings for Contact */
+.contact-orbit {
+  position: absolute;
+  inset: 0;
+  perspective: 1000px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.c-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  transform-style: preserve-3d;
+}
+
+.c-ring-1 {
+  width: 600px;
+  height: 600px;
+  margin: -300px 0 0 -300px;
+  animation: contact-spin-a 24s linear infinite;
+}
+
+.c-ring-2 {
+  width: 800px;
+  height: 800px;
+  margin: -400px 0 0 -400px;
+  border-color: rgba(34, 211, 238, 0.1);
+  animation: contact-spin-b 32s linear infinite reverse;
+}
+
+@keyframes contact-spin-a {
+  from { transform: rotateX(65deg) rotateZ(0deg); }
+  to   { transform: rotateX(65deg) rotateZ(360deg); }
+}
+
+@keyframes contact-spin-b {
+  from { transform: rotateX(55deg) rotateY(15deg) rotateZ(0deg); }
+  to   { transform: rotateX(55deg) rotateY(15deg) rotateZ(360deg); }
 }
 
 /* ============================================================
@@ -1006,21 +1057,19 @@ a:focus-visible, button:focus-visible {
 
   .nav-link.active::after { display: none; }
 
-  .stats-grid { 
-    flex-direction: column; 
-    gap: 30px; 
-  }
-  
-  .stat-divider { 
-    width: 60%; 
-    height: 1px; 
-    background: linear-gradient(90deg, transparent, var(--border-strong), transparent); 
-  }
-
+  .stats-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
 
   .section { padding-block: 76px; }
-  .contact { padding-block: 100px; }
+  .contact { padding-block: 88px; }
+  
+  /* New Contact adjustments for mobile */
+  .contact-wrapper {
+    padding: 50px 24px;
+    border-radius: 24px;
+  }
+  
+  .contact-orbit { display: none; }
 
   .footer-inner {
     flex-direction: column;
@@ -1045,14 +1094,13 @@ a:focus-visible, button:focus-visible {
   .orbit-chip { font-size: 0.7rem; padding: 5px 11px; }
 
   .glass-card, .side-card, .skills-tags,
-  .project-body { padding: 22px; }
-
-  .side-card { flex-direction: column; text-align: center; }
+  .project-body, .stat-card { padding: 22px; }
 
   .timeline { padding-left: 34px; }
   .timeline-dot { left: -30px; }
 
-  .contact-glow { width: 400px; height: 400px; }
+  .contact-orbits { flex-wrap: wrap; }
+  .orbit-btn { width: 48px; height: 48px; }
 }
 
 /* ============================================================
@@ -1066,7 +1114,7 @@ a:focus-visible, button:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  .ring, .orbit-chip, .badge-dot { animation: none; }
+  .ring, .orbit-chip, .badge-dot, .c-ring { animation: none; }
 
   .js .reveal { opacity: 1; transform: none; }
 
