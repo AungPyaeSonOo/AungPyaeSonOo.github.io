@@ -1,4 +1,3 @@
-
 :root {
   --bg: #0b1120;
   --bg-soft: #101a2e;
@@ -6,6 +5,7 @@
   --text: #f1f5f9;
   --muted: #9aaac0;
   --accent: #38bdf8;
+  --accent-2: #818cf8;
   --border: rgba(148, 163, 184, 0.17);
   --radius: 18px;
   --max-width: 1120px;
@@ -23,12 +23,21 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(56, 189, 248, 0.08), transparent 38%),
+    radial-gradient(circle at 88% 12%, rgba(129, 140, 248, 0.08), transparent 42%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: Inter, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   line-height: 1.7;
   overflow-wrap: break-word;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.28);
+  color: #fff;
 }
 
 a {
@@ -52,6 +61,9 @@ a:focus-visible {
   margin-inline: auto;
 }
 
+/* =========================================================
+   HEADER / NAVIGATION
+   ========================================================= */
 .header {
   position: sticky;
   top: 0;
@@ -112,6 +124,9 @@ a:focus-visible {
   background: var(--text);
 }
 
+/* =========================================================
+   HERO
+   ========================================================= */
 .hero {
   min-height: 610px;
   padding-block: 105px 95px;
@@ -121,6 +136,113 @@ a:focus-visible {
   gap: 64px;
 }
 
+.hero-content {
+  min-width: 0;
+}
+
+/* ---------- PROFILE PHOTO SLOT ---------- */
+.hero-photo {
+  position: relative;
+  width: 132px;
+  margin-bottom: 26px;
+}
+
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.28),
+    transparent 70%
+  );
+  filter: blur(10px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.photo-frame {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  background: #0d1728;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
+  animation: float 6s ease-in-out infinite;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    #38bdf8,
+    #818cf8,
+    #22d3ee,
+    #38bdf8
+  );
+  z-index: -1;
+  animation: spin 9s linear infinite;
+}
+
+.photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+  animation: spin-reverse 18s linear infinite;
+  pointer-events: none;
+}
+
+.photo-initials {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--accent);
+}
+
+.profile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.profile-img.loaded {
+  opacity: 1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  to { transform: rotate(-360deg); }
+}
+
+/* ---------- HERO TEXT ---------- */
 .eyebrow {
   color: var(--accent);
   font-size: 0.77rem;
@@ -137,6 +259,12 @@ a:focus-visible {
   border-radius: 50%;
   background: #4ade80;
   box-shadow: 0 0 12px rgba(74, 222, 128, 0.4);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.45); }
+  50% { box-shadow: 0 0 0 7px rgba(74, 222, 128, 0); }
 }
 
 .hero h1 {
@@ -178,7 +306,8 @@ a:focus-visible {
   border-radius: 10px;
   font-size: 0.92rem;
   font-weight: 750;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .btn:hover {
@@ -187,11 +316,13 @@ a:focus-visible {
 
 .btn-primary {
   color: #07111f;
-  background: var(--accent);
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.18);
 }
 
 .btn-primary:hover {
-  background: #7dd3fc;
+  box-shadow: 0 14px 38px rgba(56, 189, 248, 0.28);
+  filter: brightness(1.05);
 }
 
 .btn-outline {
@@ -202,6 +333,7 @@ a:focus-visible {
 
 .btn-outline:hover {
   background: var(--card);
+  border-color: rgba(56, 189, 248, 0.4);
 }
 
 .hero-meta {
@@ -213,6 +345,9 @@ a:focus-visible {
   font-size: 0.82rem;
 }
 
+/* =========================================================
+   CODE CARD
+   ========================================================= */
 .code-card {
   overflow: hidden;
   border: 1px solid rgba(56, 189, 248, 0.2);
@@ -264,57 +399,99 @@ a:focus-visible {
   font: 0.83rem/2 "SFMono-Regular", Consolas, monospace;
 }
 
-.code-purple {
-  color: #c4b5fd;
-}
-
-.code-green {
-  color: #86efac;
-}
-
-.code-blue {
-  color: #7dd3fc;
-}
-
-.code-comment {
-  color: #64748b;
-}
+.code-purple { color: #c4b5fd; }
+.code-green  { color: #86efac; }
+.code-blue   { color: #7dd3fc; }
+.code-comment { color: #64748b; }
 
 .code-footer {
   border-top: 1px solid var(--border);
 }
 
+/* =========================================================
+   ANIMATED TECH MARQUEE
+   ========================================================= */
 .tech-strip {
+  overflow: hidden;
+  padding-block: 24px;
   border-block: 1px solid var(--border);
   background: rgba(16, 26, 46, 0.65);
 }
 
-.tech-inner {
-  min-height: 100px;
+.tech-label {
+  text-align: center;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding-block: 20px;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.tech-inner > span {
-  color: var(--muted);
-  font-size: 0.73rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-}
-
-.tech-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 25px;
+.marquee-group li {
+  position: relative;
+  padding: 8px 28px;
   color: #d3dfed;
+  font-size: 0.9rem;
   font-weight: 650;
-  font-size: 0.88rem;
+  white-space: nowrap;
 }
 
+.marquee-group li::after {
+  content: "•";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  opacity: 0.45;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
 .section {
   padding-block: 110px;
 }
@@ -355,6 +532,9 @@ a:focus-visible {
   border-block: 1px solid var(--border);
 }
 
+/* =========================================================
+   SKILLS
+   ========================================================= */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -366,13 +546,18 @@ a:focus-visible {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: rgba(18, 30, 50, 0.7);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .skill-card:hover,
 .project-card:hover {
   border-color: rgba(56, 189, 248, 0.5);
   transform: translateY(-4px);
+}
+
+.skill-card:hover {
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
 }
 
 .featured-skill {
@@ -389,6 +574,12 @@ a:focus-visible {
   background: rgba(56, 189, 248, 0.1);
   color: var(--accent);
   font-size: 1.4rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.08) rotate(-3deg);
+  background: rgba(56, 189, 248, 0.16);
 }
 
 .skill-card h3,
@@ -421,6 +612,9 @@ a:focus-visible {
   font-size: 0.75rem;
 }
 
+/* =========================================================
+   PROJECTS
+   ========================================================= */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -433,7 +627,12 @@ a:focus-visible {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--card);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
 }
 
 .project-visual {
@@ -443,6 +642,11 @@ a:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  transition: filter 0.2s ease;
+}
+
+.project-card:hover .project-visual {
+  filter: brightness(1.08);
 }
 
 .visual-blue {
@@ -470,6 +674,11 @@ a:focus-visible {
   font-weight: 850;
   letter-spacing: -1px;
   color: #f1f5f9;
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .project-symbol {
+  transform: scale(1.06);
 }
 
 .project-body {
@@ -496,12 +705,9 @@ a:focus-visible {
   text-decoration: underline;
 }
 
-.projects-note {
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: 0.83rem;
-}
-
+/* =========================================================
+   EDUCATION
+   ========================================================= */
 .education-layout {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -530,6 +736,9 @@ a:focus-visible {
   margin-top: 14px;
 }
 
+/* =========================================================
+   CONTACT
+   ========================================================= */
 .contact-section {
   text-align: center;
 }
@@ -548,6 +757,9 @@ a:focus-visible {
   justify-content: center;
 }
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
 .footer {
   border-top: 1px solid var(--border);
   background: #080d18;
@@ -567,6 +779,48 @@ a:focus-visible {
   font-size: 0.79rem;
 }
 
+/* =========================================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================================= */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.js .reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Small stagger for grid items */
+.skills-grid .reveal:nth-child(2),
+.projects-grid .reveal:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.skills-grid .reveal:nth-child(3),
+.projects-grid .reveal:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.skills-grid .reveal:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+/* Hero content stagger */
+.hero-content .reveal:nth-child(1) { transition-delay: 0.04s; }
+.hero-content .reveal:nth-child(2) { transition-delay: 0.1s; }
+.hero-content .reveal:nth-child(3) { transition-delay: 0.16s; }
+.hero-content .reveal:nth-child(4) { transition-delay: 0.22s; }
+.hero-content .reveal:nth-child(5) { transition-delay: 0.28s; }
+.hero-content .reveal:nth-child(6) { transition-delay: 0.34s; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -631,6 +885,16 @@ a:focus-visible {
     gap: 40px;
   }
 
+  .hero-photo,
+  .photo-frame {
+    width: 112px;
+    height: 112px;
+  }
+
+  .photo-initials {
+    font-size: 2rem;
+  }
+
   .hero h1 {
     font-size: clamp(2.5rem, 11vw, 3.5rem);
     letter-spacing: -1.5px;
@@ -659,13 +923,13 @@ a:focus-visible {
     font-size: 0.7rem;
   }
 
-  .tech-inner {
-    align-items: flex-start;
-    flex-direction: column;
+  .tech-strip {
+    padding-block: 18px;
   }
 
-  .tech-list {
-    gap: 10px 16px;
+  .marquee-group li {
+    padding: 8px 22px;
+    font-size: 0.82rem;
   }
 
   .section {
@@ -704,11 +968,29 @@ a:focus-visible {
   }
 }
 
+/* =========================================================
+   ACCESSIBILITY: REDUCED MOTION
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .marquee-track,
+  .photo-frame,
+  .photo-frame::before,
+  .photo-frame::after,
+  .status-dot {
+    animation: none;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
