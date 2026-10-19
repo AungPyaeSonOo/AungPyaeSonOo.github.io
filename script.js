@@ -89,20 +89,20 @@ if (sections.length && navLinks.length) {
 }
 
 /* ============================================================
-   PROFILE PHOTO — fallback to initials
+   PROFILE PHOTO — two-layer fallback
    ============================================================ */
-const profilePhoto = document.getElementById("profile-photo");
+const realPhoto = document.getElementById("profile-real");
 
-if (profilePhoto) {
-  const onLoad = () => profilePhoto.classList.add("loaded");
-  const onError = () => { profilePhoto.style.display = "none"; };
+if (realPhoto) {
+  const showReal = () => realPhoto.classList.add("loaded");
+  const dropBroken = () => realPhoto.remove();
 
-  if (profilePhoto.complete) {
-    if (profilePhoto.naturalWidth > 0) onLoad();
-    else onError();
+  if (realPhoto.complete) {
+    if (realPhoto.naturalWidth > 0) showReal();
+    else dropBroken();
   } else {
-    profilePhoto.addEventListener("load", onLoad, { once: true });
-    profilePhoto.addEventListener("error", onError, { once: true });
+    realPhoto.addEventListener("load", showReal, { once: true });
+    realPhoto.addEventListener("error", dropBroken, { once: true });
   }
 }
 
@@ -142,13 +142,12 @@ function animateCount(el) {
 
   const duration = 1300;
   const start = performance.now();
-  const suffix = target < 10 ? "0" : "";
 
   const tick = (now) => {
     const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     const value = Math.round(target * eased);
-    el.textContent = suffix ? String(value).padStart(2, "0") : value;
+    el.textContent = value;
     if (progress < 1) requestAnimationFrame(tick);
   };
 
@@ -216,7 +215,7 @@ if (tiltCards.length && finePointer && !reduceMotion) {
 }
 
 /* ============================================================
-   SPOTLIGHT — about card (no tilt)
+   SPOTLIGHT — glass cards
    ============================================================ */
 const glowCards = document.querySelectorAll(".glass-card");
 
