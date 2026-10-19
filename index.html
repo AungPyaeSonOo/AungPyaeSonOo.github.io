@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +9,15 @@
 
   <meta name="theme-color" content="#0b1120">
   <title>Aung Pyae Son Oo | Java Backend Developer</title>
+
+  <!-- Avoid flash of hidden reveal content before JS loads -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
@@ -41,23 +49,43 @@
   <main>
     <section class="hero container" id="home">
       <div class="hero-content">
-        <p class="eyebrow">
+
+        <!-- ============ PROFILE PHOTO SLOT ============
+             Put your photo at:  assets/profile.jpg
+             Recommended: square image, 500x500px or larger,
+             face centered, JPG or WebP.
+             If the file is missing, the "AP" initials are shown.
+        ================================================ -->
+        <div class="hero-photo reveal">
+          <div class="photo-frame">
+            <span class="photo-initials" aria-hidden="true">AP</span>
+            <img class="profile-img"
+                 id="profile-photo"
+                 src="assets/profile.jpg"
+                 alt="Portrait of Aung Pyae Son Oo"
+                 width="132"
+                 height="132"
+                 loading="eager">
+          </div>
+        </div>
+
+        <p class="eyebrow reveal">
           <span class="status-dot"></span>
           ASPIRING SOFTWARE DEVELOPER
         </p>
 
-        <h1>
+        <h1 class="reveal">
           Building reliable<br>
           <span class="gradient-text">backend systems.</span>
         </h1>
 
-        <p class="hero-description">
+        <p class="hero-description reveal">
           Hi, I'm Aung Pyae Son Oo, a Mathematics student from Myanmar
           passionate about Java, Spring Boot, REST APIs and
           database-driven applications.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions reveal">
           <a class="btn btn-primary" href="#projects">
             Explore My Projects ↗
           </a>
@@ -69,9 +97,9 @@
           </a>
         </div>
 
-        <div class="hero-meta">
+        <div class="hero-meta reveal">
           <span>📍 Myanmar</span>
-          <span>☕ Java & Spring Boot</span>
+          <span>☕ Java &amp; Spring Boot</span>
           <span>🌏 Open to opportunities</span>
         </div>
       </div>
@@ -106,27 +134,53 @@
       </div>
     </section>
 
-    <section class="tech-strip">
-      <div class="container tech-inner">
-        <span>CORE TECHNOLOGIES</span>
-        <div class="tech-list">
-          <span>Java</span>
-          <span>Spring Boot</span>
-          <span>MySQL</span>
-          <span>PostgreSQL</span>
-          <span>MyBatis</span>
-          <span>React</span>
+    <!-- ============ ANIMATED TECH MARQUEE ============ -->
+    <section class="tech-strip" aria-label="Core technologies">
+      <p class="tech-label">CORE TECHNOLOGIES</p>
+
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="marquee-group">
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+            <li>MyBatis</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>JavaScript</li>
+            <li>MongoDB</li>
+            <li>Git</li>
+            <li>Tailwind CSS</li>
+          </ul>
+
+          <!-- Duplicate group for a seamless infinite loop -->
+          <ul class="marquee-group" aria-hidden="true">
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>MySQL</li>
+            <li>PostgreSQL</li>
+            <li>MyBatis</li>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>JavaScript</li>
+            <li>MongoDB</li>
+            <li>Git</li>
+            <li>Tailwind CSS</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section container" id="about">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p class="eyebrow">01 / ABOUT ME</p>
         <h2>Focused on building<br>useful software.</h2>
       </div>
 
-      <div class="about-content">
+      <div class="about-content reveal">
         <p>
           I am studying Mathematics at Magway University and developing
           my skills in software engineering. I enjoy turning problems
@@ -148,7 +202,7 @@
 
     <section class="section section-alt" id="skills">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <p class="eyebrow">02 / TECHNICAL SKILLS</p>
           <h2>My developer toolkit.</h2>
           <p class="section-subtitle">
@@ -157,7 +211,7 @@
         </div>
 
         <div class="skills-grid">
-          <article class="skill-card featured-skill">
+          <article class="skill-card featured-skill reveal">
             <div class="skill-icon">☕</div>
             <h3>Backend Development</h3>
             <p>My primary area of focus.</p>
@@ -172,7 +226,7 @@
             </div>
           </article>
 
-          <article class="skill-card">
+          <article class="skill-card reveal">
             <div class="skill-icon">▤</div>
             <h3>Databases</h3>
             <p>Data modeling and persistence.</p>
@@ -183,7 +237,7 @@
             </div>
           </article>
 
-          <article class="skill-card">
+          <article class="skill-card reveal">
             <div class="skill-icon">⌘</div>
             <h3>Frontend</h3>
             <p>Building user-facing applications.</p>
@@ -197,9 +251,9 @@
             </div>
           </article>
 
-          <article class="skill-card">
+          <article class="skill-card reveal">
             <div class="skill-icon">⌁</div>
-            <h3>Tools & Other</h3>
+            <h3>Tools &amp; Other</h3>
             <p>Development and collaboration.</p>
             <div class="tags">
               <span>Git</span>
@@ -213,7 +267,7 @@
     </section>
 
     <section class="section container" id="projects">
-      <div class="section-heading">
+      <div class="section-heading reveal">
         <p class="eyebrow">03 / SELECTED PROJECTS</p>
         <h2>Things I've built.</h2>
         <p class="section-subtitle">
@@ -222,7 +276,7 @@
       </div>
 
       <div class="projects-grid">
-        <article class="project-card">
+        <article class="project-card reveal">
           <div class="project-visual visual-blue">
             <span class="project-number">PROJECT / 01</span>
             <span class="project-symbol">{ API }</span>
@@ -239,6 +293,7 @@
               <span>Spring Boot</span>
               <span>Database</span>
             </div>
+            <!-- TODO: replace with the exact repository URL -->
             <a class="project-link"
                href="https://github.com/AungPyaeSonOo"
                target="_blank"
@@ -248,7 +303,7 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal">
           <div class="project-visual visual-purple">
             <span class="project-number">PROJECT / 02</span>
             <span class="project-symbol">TICKET</span>
@@ -265,6 +320,7 @@
               <span>Web Development</span>
               <span>Database</span>
             </div>
+            <!-- TODO: replace with the exact repository URL -->
             <a class="project-link"
                href="https://github.com/AungPyaeSonOo"
                target="_blank"
@@ -274,53 +330,48 @@
           </div>
         </article>
 
-       <article class="project-card">
-  <div class="project-visual visual-green">
-    <span class="project-number">PROJECT / 03</span>
-    <span class="project-symbol">FULL STACK</span>
-  </div>
+        <article class="project-card reveal">
+          <div class="project-visual visual-green">
+            <span class="project-number">PROJECT / 03</span>
+            <span class="project-symbol">FULL STACK</span>
+          </div>
 
-  <div class="project-body">
-    <p class="project-type">FULL-STACK DEVELOPMENT</p>
-    <h3>Laundry Management System</h3>
-    <p>
-      A full-stack laundry management application for managing
-      orders, customers, employees, inventory, expenses, payments,
-      reports, and delivery tracking with role-based access control.
-    </p>
+          <div class="project-body">
+            <p class="project-type">FULL-STACK DEVELOPMENT</p>
+            <h3>Laundry Management System</h3>
+            <p>
+              A full-stack laundry management application for managing
+              orders, customers, employees, inventory, expenses, payments,
+              reports, and delivery tracking with role-based access control.
+            </p>
 
-    <div class="tags">
-      <span>React</span>
-      <span>Node.js</span>
-      <span>Express.js</span>
-      <span>PostgreSQL</span>
-      <span>Sequelize</span>
-      <span>JWT</span>
-    </div>
+            <div class="tags">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>PostgreSQL</span>
+              <span>Sequelize</span>
+              <span>JWT</span>
+            </div>
 
-    <a class="project-link"
-       href="https://github.com/AungPyaeSonOo/Laundry-Management-System"
-       target="_blank"
-       rel="noopener noreferrer">
-      View Source Code on GitHub ↗
-    </a>
-  </div>
-</article>
+            <a class="project-link"
+               href="https://github.com/AungPyaeSonOo/Laundry-Management-System"
+               target="_blank"
+               rel="noopener noreferrer">
+              View Source Code on GitHub ↗
+            </a>
+          </div>
+        </article>
       </div>
-
-      <p class="projects-note">
-        Project links currently open your GitHub profile. Replace them
-        with the exact repository URLs when you connect each project.
-      </p>
     </section>
 
     <section class="section section-alt" id="education">
       <div class="container education-layout">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <p class="eyebrow">04 / EDUCATION</p>
           <h2>Learning by<br>building.</h2>
         </div>
-        <div class="education-card">
+        <div class="education-card reveal">
           <span class="education-icon">🎓</span>
           <div>
             <p class="project-type">UNIVERSITY EDUCATION</p>
@@ -336,21 +387,23 @@
     </section>
 
     <section class="section container contact-section" id="contact">
-      <p class="eyebrow">05 / GET IN TOUCH</p>
-      <h2>Let's build something<br><span class="gradient-text">meaningful.</span></h2>
-      <p class="contact-description">
+      <p class="eyebrow reveal">05 / GET IN TOUCH</p>
+      <h2 class="reveal">
+        Let's build something<br><span class="gradient-text">meaningful.</span>
+      </h2>
+      <p class="contact-description reveal">
         Interested in my projects or have an opportunity to discuss?
         Feel free to connect with me.
       </p>
 
-      <div class="contact-actions">
+      <div class="contact-actions reveal">
         <a class="btn btn-primary"
            href="https://github.com/AungPyaeSonOo"
            target="_blank"
            rel="noopener noreferrer">
           Connect on GitHub ↗
         </a>
-        <!-- Replace this with your real email address -->
+        <!-- TODO: replace with your real email address -->
         <a class="btn btn-outline"
            href="mailto:YOUR_EMAIL@example.com">
           Email Me ↗
