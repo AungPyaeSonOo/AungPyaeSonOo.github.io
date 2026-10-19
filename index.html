@@ -125,29 +125,32 @@
     </section>
 
     <!-- ============================================================
-         STATS BAR (Clean Minimalist Design)
+         STATS BAR
          ============================================================ -->
     <section class="stats container" aria-label="Quick statistics">
-      <div class="stats-grid reveal">
-        <div class="stat-item">
-          <span class="stat-value" data-count="3">0</span>
+      <div class="stats-grid">
+        <article class="stat-card reveal">
+          <span class="stat-icon">🚀</span>
+          <div class="stat-value" data-count="3">0</div>
           <span class="stat-label">Projects Built</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-value" data-count="15">0</span>
+        </article>
+
+        <article class="stat-card reveal">
+          <span class="stat-icon">⚡</span>
+          <div class="stat-value" data-count="15">0</div>
           <span class="stat-label">Technologies</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-value text-grad">Java</span>
+        </article>
+
+        <article class="stat-card reveal">
+          <span class="stat-icon">☕</span>
+          <div class="stat-value stat-text">Java</div>
           <span class="stat-label">Core Focus</span>
-        </div>
+        </article>
       </div>
     </section>
 
     <!-- ============================================================
-         ABOUT (Perfect 50/50 Balanced Layout)
+         ABOUT
          ============================================================ -->
     <section class="section container" id="about">
       <header class="section-head reveal">
@@ -156,49 +159,39 @@
       </header>
 
       <div class="about-grid">
-        <!-- Left Side: Main Text -->
         <article class="glass-card about-card reveal">
           <span class="card-glow" aria-hidden="true"></span>
-          <div class="about-card-content">
-            <p>
-              I study Mathematics at Magway University while building
-              practical software every day. I love turning complex
-              problems into clean, maintainable applications.
-            </p>
-            <p>
-              My core strength is Java backend development — REST API
-              design, database integration and clean architecture. On
-              the side I build full-stack products with React and Node.
-            </p>
-            <p class="about-final">
-              Goal: grow as a software engineer and contribute to a
-              professional team in Singapore.
-            </p>
-          </div>
+          <p>
+            I study Mathematics at Magway University while building
+            practical software every day. I love turning complex
+            problems into clean, maintainable applications.
+          </p>
+          <p>
+            My core strength is Java backend development — REST API
+            design, database integration and clean architecture. On
+            the side I build full-stack products with React and Node.
+          </p>
+          <p class="about-final">
+            Goal: grow as a software engineer and contribute to a
+            professional team in Singapore.
+          </p>
         </article>
 
-        <!-- Right Side: Two Equal Cards -->
         <div class="about-side">
-          <div class="glass-card side-card reveal">
-            <span class="card-glow" aria-hidden="true"></span>
+          <div class="side-card reveal">
             <span class="side-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </span>
-            <div>
-              <h3>Clean Code</h3>
-              <p>Readable, testable, maintainable.</p>
-            </div>
+            <h3>Clean Code</h3>
+            <p>Readable, testable, maintainable.</p>
           </div>
 
-          <div class="glass-card side-card reveal">
-            <span class="card-glow" aria-hidden="true"></span>
+          <div class="side-card reveal">
             <span class="side-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
             </span>
-            <div>
-              <h3>Data First</h3>
-              <p>Solid schemas and reliable persistence.</p>
-            </div>
+            <h3>Data First</h3>
+            <p>Solid schemas and reliable persistence.</p>
           </div>
         </div>
       </div>
@@ -409,30 +402,36 @@
     </section>
 
     <!-- ============================================================
-         CONTACT (Clean Centered Design)
+         CONTACT
          ============================================================ -->
     <section class="section container contact" id="contact">
-      <div class="contact-glow" aria-hidden="true"></div>
-      
-      <div class="contact-inner reveal">
-        <span class="section-tag">05 — Contact</span>
-        <h2>Let's build something<br><span class="grad">meaningful</span>.</h2>
-        <p class="contact-lead">
-          Interested in my work or have an opportunity to discuss?
-          Let's connect and create something great.
-        </p>
+      <div class="contact-wrapper reveal">
+        <!-- Background 3D Rings -->
+        <div class="contact-orbit">
+          <div class="c-ring c-ring-1"></div>
+          <div class="c-ring c-ring-2"></div>
+        </div>
 
-        <div class="contact-actions">
-          <a class="btn btn-primary"
-             href="https://github.com/AungPyaeSonOo"
-             target="_blank" rel="noopener noreferrer">
-            Connect on GitHub
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="mailto:YOUR_EMAIL@example.com">
-            Email Me
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
+        <div class="contact-content">
+          <span class="section-tag">05 — Contact</span>
+          <h2>Let's build something<br><span class="grad">meaningful</span>.</h2>
+          <p class="contact-lead">
+            Interested in my work or have an opportunity to discuss?
+            Let's connect and create something great.
+          </p>
+
+          <div class="contact-actions">
+            <a class="btn btn-primary"
+               href="https://github.com/AungPyaeSonOo"
+               target="_blank" rel="noopener noreferrer">
+              Connect on GitHub
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="mailto:YOUR_EMAIL@example.com">
+              Email Me
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
