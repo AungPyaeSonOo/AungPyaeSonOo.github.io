@@ -99,14 +99,14 @@
           </div>
 
           <div class="orb-photo">
-            <!-- 1) DEFAULT AVATAR — always visible, no network request, no 404 -->
+            <!-- 1) DEFAULT AVATAR — always visible -->
             <img class="profile-layer profile-default"
                  src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'><defs><linearGradient id='fg' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='%2322d3ee'/><stop offset='100%' stop-color='%238b5cf6'/></linearGradient></defs><circle cx='160' cy='160' r='140' fill='none' stroke='url(%23fg)' stroke-opacity='0.15' stroke-width='1.5'/><circle cx='160' cy='160' r='100' fill='none' stroke='url(%23fg)' stroke-opacity='0.08' stroke-width='1'/><circle cx='160' cy='126' r='44' fill='url(%23fg)' opacity='0.92'/><path d='M160 190c-50 0-82 32-88 88h176c-6-56-38-88-88-88z' fill='url(%23fg)' opacity='0.92'/></svg>"
                  alt="Aung Pyae Son Oo"
                  width="320" height="320"
                  draggable="false">
 
-            <!-- 2) REAL PHOTO — fades in on top automatically once you add assets/profile.jpg -->
+            <!-- 2) REAL PHOTO -->
             <img class="profile-layer profile-real"
                  id="profile-real"
                  src="assets/profile.jpg"
@@ -125,7 +125,7 @@
     </section>
 
     <!-- ============================================================
-         STATS BAR (Clean Minimalist Design)
+         STATS BAR
          ============================================================ -->
     <section class="stats container" aria-label="Quick statistics">
       <div class="stats-grid reveal">
@@ -147,7 +147,7 @@
     </section>
 
     <!-- ============================================================
-         ABOUT
+         ABOUT (Balanced Symmetrical Layout)
          ============================================================ -->
     <section class="section container" id="about">
       <header class="section-head reveal">
@@ -155,42 +155,49 @@
         <h2>Focused on building<br>useful software.</h2>
       </header>
 
-      <div class="about-grid">
-        <article class="glass-card about-card reveal">
-          <span class="card-glow" aria-hidden="true"></span>
-          <p>
-            I study Mathematics at Magway University while building
-            practical software every day. I love turning complex
-            problems into clean, maintainable applications.
-          </p>
-          <p>
-            My core strength is Java backend development — REST API
-            design, database integration and clean architecture. On
-            the side I build full-stack products with React and Node.
-          </p>
-          <p class="about-final">
-            Goal: grow as a software engineer and contribute to a
-            professional team in Singapore.
-          </p>
+      <!-- Centered wide text block -->
+      <div class="about-content reveal">
+        <p>
+          I study Mathematics at Magway University while building
+          practical software every day. I love turning complex
+          problems into clean, maintainable applications. 
+        </p>
+        <p>
+          My core strength is Java backend development — REST API
+          design, database integration and clean architecture. On
+          the side I build full-stack products with React and Node.
+        </p>
+        <p class="about-final">
+          Goal: grow as a software engineer and contribute to a
+          professional team in Singapore.
+        </p>
+      </div>
+
+      <!-- 3 Equal feature cards below -->
+      <div class="about-features">
+        <article class="feature-card reveal">
+          <span class="side-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          <h3>Clean Code</h3>
+          <p>Readable, testable, and maintainable applications.</p>
         </article>
 
-        <div class="about-side">
-          <div class="side-card reveal">
-            <span class="side-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </span>
-            <h3>Clean Code</h3>
-            <p>Readable, testable, maintainable.</p>
-          </div>
+        <article class="feature-card reveal">
+          <span class="side-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+          </span>
+          <h3>Data First</h3>
+          <p>Solid database schemas and reliable persistence.</p>
+        </article>
 
-          <div class="side-card reveal">
-            <span class="side-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-            </span>
-            <h3>Data First</h3>
-            <p>Solid schemas and reliable persistence.</p>
-          </div>
-        </div>
+        <article class="feature-card reveal">
+          <span class="side-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          </span>
+          <h3>Backend Focus</h3>
+          <p>Robust REST APIs and scalable system design.</p>
+        </article>
       </div>
     </section>
 
@@ -399,7 +406,7 @@
     </section>
 
     <!-- ============================================================
-         CONTACT (Clean Centered Design)
+         CONTACT
          ============================================================ -->
     <section class="section container contact" id="contact">
       <div class="contact-glow" aria-hidden="true"></div>
