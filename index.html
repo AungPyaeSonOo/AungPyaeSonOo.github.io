@@ -150,7 +150,7 @@
     </section>
 
     <!-- ============================================================
-         ABOUT
+         ABOUT (Perfect 50/50 Balanced Layout)
          ============================================================ -->
     <section class="section container" id="about">
       <header class="section-head reveal">
@@ -159,46 +159,56 @@
       </header>
 
       <div class="about-grid">
+        <!-- Left Side: Main Text -->
         <article class="glass-card about-card reveal">
           <span class="card-glow" aria-hidden="true"></span>
-          <p>
-            I study Mathematics at Magway University while building
-            practical software every day. I love turning complex
-            problems into clean, maintainable applications.
-          </p>
-          <p>
-            My core strength is Java backend development — REST API
-            design, database integration and clean architecture. On
-            the side I build full-stack products with React and Node.
-          </p>
-          <p class="about-final">
-            Goal: grow as a software engineer and contribute to a
-            professional team in Singapore.
-          </p>
+          <div class="about-card-content">
+            <p>
+              I study Mathematics at Magway University while building
+              practical software every day. I love turning complex
+              problems into clean, maintainable applications.
+            </p>
+            <p>
+              My core strength is Java backend development — REST API
+              design, database integration and clean architecture. On
+              the side I build full-stack products with React and Node.
+            </p>
+            <p class="about-final">
+              Goal: grow as a software engineer and contribute to a
+              professional team in Singapore.
+            </p>
+          </div>
         </article>
 
+        <!-- Right Side: Two Equal Cards -->
         <div class="about-side">
-          <div class="side-card reveal">
+          <div class="glass-card side-card reveal">
+            <span class="card-glow" aria-hidden="true"></span>
             <span class="side-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </span>
-            <h3>Clean Code</h3>
-            <p>Readable, testable, maintainable.</p>
+            <div>
+              <h3>Clean Code</h3>
+              <p>Readable, testable, and maintainable applications.</p>
+            </div>
           </div>
 
-          <div class="side-card reveal">
+          <div class="glass-card side-card reveal">
+            <span class="card-glow" aria-hidden="true"></span>
             <span class="side-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
             </span>
-            <h3>Data First</h3>
-            <p>Solid schemas and reliable persistence.</p>
+            <div>
+              <h3>Data First</h3>
+              <p>Solid database schemas and reliable persistence.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         SKILLS — BARS
+         SKILLS (Clean 2-Column Grid of Line Bars)
          ============================================================ -->
     <section class="section section-alt" id="skills">
       <div class="container">
@@ -208,58 +218,56 @@
           <p class="section-sub">Technologies I use and keep sharpening.</p>
         </header>
 
-        <div class="skills-layout">
-          <div class="skills-bars">
-            <div class="skill-bar reveal" style="--val:95">
-              <div class="skill-bar-top"><span>Java</span><span class="skill-pct">95%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:92">
-              <div class="skill-bar-top"><span>Spring Boot</span><span class="skill-pct">92%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:90">
-              <div class="skill-bar-top"><span>REST APIs</span><span class="skill-pct">90%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:88">
-              <div class="skill-bar-top"><span>MySQL / PostgreSQL</span><span class="skill-pct">88%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:82">
-              <div class="skill-bar-top"><span>MyBatis</span><span class="skill-pct">82%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:80">
-              <div class="skill-bar-top"><span>React</span><span class="skill-pct">80%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:78">
-              <div class="skill-bar-top"><span>Node.js / Express</span><span class="skill-pct">78%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
-            <div class="skill-bar reveal" style="--val:75">
-              <div class="skill-bar-top"><span>Git / GitHub</span><span class="skill-pct">75%</span></div>
-              <div class="bar"><div class="bar-fill"></div></div>
-            </div>
+        <div class="skills-grid">
+          <div class="skill-bar reveal" style="--val:95">
+            <div class="skill-bar-top"><span>Java</span><span class="skill-pct">95%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+          
+          <div class="skill-bar reveal" style="--val:92">
+            <div class="skill-bar-top"><span>Spring Boot</span><span class="skill-pct">92%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
           </div>
 
-          <aside class="skills-tags reveal">
-            <h3>Also working with</h3>
-            <div class="tag-cloud">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>MongoDB</span>
-              <span>Sequelize</span>
-              <span>JWT</span>
-              <span>Maven</span>
-              <span>JDBC</span>
-              <span>Bootstrap</span>
-              <span>Tailwind</span>
-              <span>Spring MVC</span>
-            </div>
-          </aside>
+          <div class="skill-bar reveal" style="--val:90">
+            <div class="skill-bar-top"><span>REST APIs</span><span class="skill-pct">90%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:88">
+            <div class="skill-bar-top"><span>MySQL / PostgreSQL</span><span class="skill-pct">88%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:82">
+            <div class="skill-bar-top"><span>MyBatis</span><span class="skill-pct">82%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:80">
+            <div class="skill-bar-top"><span>React</span><span class="skill-pct">80%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:78">
+            <div class="skill-bar-top"><span>Node.js / Express</span><span class="skill-pct">78%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:75">
+            <div class="skill-bar-top"><span>Git / GitHub</span><span class="skill-pct">75%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+          
+          <div class="skill-bar reveal" style="--val:85">
+            <div class="skill-bar-top"><span>JDBC / Maven</span><span class="skill-pct">85%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
+
+          <div class="skill-bar reveal" style="--val:75">
+            <div class="skill-bar-top"><span>MongoDB / Sequelize</span><span class="skill-pct">75%</span></div>
+            <div class="bar"><div class="bar-fill"></div></div>
+          </div>
         </div>
       </div>
     </section>
